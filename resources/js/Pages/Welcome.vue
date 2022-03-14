@@ -1,7 +1,7 @@
 <template>
     <Nav />
 
-    <h1>Hello, {{ name }}</h1>
+    <h1 class='text-4xl font-bold'>Hello, {{ name }}</h1>
     <p>Eu sou {{ idade <= 18 ? 'Novo' : 'Velho' }}</p>
     <p>In this series, we will use the following frameworks:</p>
     <ul>
