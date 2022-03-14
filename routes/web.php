@@ -17,11 +17,14 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'name' => 'Patrick Maciel',
+        'idade' => 32,
         'frameworks' => ['Laravel', 'Vue', 'InertiaJs'],
     ]);
 });
 
 Route::get('/users', function () {
+    sleep(2);
+
     return Inertia::render('Users');
 });
 

@@ -2,9 +2,10 @@
     <Nav />
 
     <h1>Hello, {{ name }}</h1>
+    <p>Eu sou {{ idade <= 18 ? 'Novo' : 'Velho' }}</p>
     <p>In this series, we will use the following frameworks:</p>
     <ul>
-        <li v-for="framework,key in frameworks" v-bind:key="key" v-text=framework></li>
+        <li v-for="framework,key in frameworks" v-bind:key="key" v-text="framework"></li>
     </ul>
     <hr>
 </template>
@@ -16,7 +17,8 @@ export default {
     components: { Nav },
     props: {
         name: String,
+        idade: Number,
         frameworks: Array,
-    }
+    },
 };
 </script>
