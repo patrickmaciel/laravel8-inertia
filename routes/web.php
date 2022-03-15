@@ -16,6 +16,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
+        'username' => 'PatrickMaciel',
         'name' => 'Patrick Maciel',
         'idade' => 32,
         'frameworks' => ['Laravel', 'Vue', 'InertiaJs'],

@@ -15,7 +15,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 export default {
   components: { Layout, Link },
   props: {
-      time: String,
+    time: String,
   }
 };
 </script>
