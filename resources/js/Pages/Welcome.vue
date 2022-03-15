@@ -1,5 +1,5 @@
 <template>
-    <Layout :username="username">
+    <Layout>
       <h1 class='text-3xl'>Hello, {{ name }}</h1>
 
       <p>Eu sou {{ idade <= 18 ? 'Novo' : 'Velho' }}</p>
@@ -20,7 +20,6 @@ export default {
         name: String,
         idade: Number,
         frameworks: Array,
-        username: String
     },
 };
 </script>

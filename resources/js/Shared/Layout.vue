@@ -3,6 +3,7 @@
     <header class='flex justify-between'>
       <div class='flex items-center'>
         <h1 class='font-bold text-lg'>My App</h1>
+        <!-- <p class='ml-4 text-sm'>Welcome Back, {{ $page.props.auth.user.username }}</p> -->
         <p class='ml-4 text-sm'>Welcome Back, {{ username }}</p>
       </div>
       <Nav />
@@ -21,8 +22,10 @@ import Nav from "./Nav";
 
 export default {
   components: { Nav },
-  props: {
-        username: String
-    },
+  computed: {
+    username() {
+      return this.$page.props.auth.user.username
+    }
+  }
 }
 </script>
