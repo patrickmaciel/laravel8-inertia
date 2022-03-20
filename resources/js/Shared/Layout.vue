@@ -12,6 +12,8 @@
 
   <section class="p-6">
     <div class="max-w-3xl mx-auto">
+      <iframe class='mb-6' width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/c3390bb3-bf07-4406-a8d1-5007f9948b3f?dark=false"></iframe>
+
       <slot />
     </div>
   </section>
