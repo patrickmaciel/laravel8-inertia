@@ -7,10 +7,7 @@
 </template>
 
 <script setup>
-import Layout from "../Shared/Layout";
-
 defineProps({
   time: String,
-  layout: Layout,
 });
 </script>
