@@ -8,8 +8,6 @@
     />
   </Head>
 
-  <h1 class="text-3xl">Users</h1>
-
   <!-- This example requires Tailwind CSS v2.0+ -->
   <div>
     <div class="sm:flex sm:items-center">
@@ -32,6 +30,12 @@
     <div class="mt-8 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+          <input
+            v-model="search"
+            type="text"
+            placeholder="Search..."
+            class="border px-2 rounded-lg my-2 w-full"
+          />
           <div
             class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
           >
@@ -110,9 +114,27 @@
 
 <script setup>
 import Pagination from "../Shared/Pagination";
+import { ref, watch } from "vue";
+import { Inertia } from "@inertiajs/inertia";
 
-defineProps({
+let props = defineProps({
   time: String,
   users: Object,
+  filters: Object,
+});
+
+let search = ref(props.filters.search);
+
+watch(search, (value) => {
+  Inertia.get(
+    "/users",
+    {
+      search: value,
+    },
+    {
+      preserveState: true,
+      replace: true,
+    }
+  );
 });
 </script>
