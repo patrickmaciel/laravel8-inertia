@@ -64,6 +64,7 @@
       <button
         type="submit"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        :disabled="processing"
       >
         Submit
       </button>
@@ -72,7 +73,7 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import ValidationError from "../../Shared/ValidationError";
 
@@ -87,7 +88,16 @@ let form = reactive({
   password: "",
 });
 
+let processing = ref(false);
+
 let submit = () => {
-  Inertia.post("/users", form);
+  Inertia.post("/users", form, {
+    onStart: () => {
+      processing.value = true;
+    },
+    onFinish: () => {
+      processing.value = false;
+    },
+  });
 };
 </script>

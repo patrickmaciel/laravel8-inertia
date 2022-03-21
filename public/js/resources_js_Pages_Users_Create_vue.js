@@ -30,15 +30,25 @@ __webpack_require__.r(__webpack_exports__);
       email: "",
       password: ""
     });
+    var processing = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
 
     var submit = function submit() {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post("/users", form);
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post("/users", form, {
+        onStart: function onStart() {
+          processing.value = true;
+        },
+        onFinish: function onFinish() {
+          processing.value = false;
+        }
+      });
     };
 
     var __returned__ = {
       form: form,
+      processing: processing,
       submit: submit,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
+      ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia,
       ValidationError: _Shared_ValidationError__WEBPACK_IMPORTED_MODULE_2__["default"]
     };
@@ -132,15 +142,10 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_8 = {
   "class": "mb-6"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "submit",
-  "class": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-}, " Submit ")], -1
-/* HOISTED */
-);
-
+};
+var _hoisted_9 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -193,7 +198,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     hasError: $props.errors.password
   }, null, 8
   /* PROPS */
-  , ["hasError"])]), _hoisted_8], 32
+  , ["hasError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "submit",
+    "class": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
+    disabled: $setup.processing
+  }, " Submit ", 8
+  /* PROPS */
+  , _hoisted_9)])], 32
   /* HYDRATE_EVENTS */
   )], 64
   /* STABLE_FRAGMENT */
