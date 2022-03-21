@@ -133,8 +133,8 @@ watch(search, (value) => {
       search: value,
     },
     {
-      preserveState: true,
-      replace: true,
+      preserveState: true, // não gera histórico
+      replace: true, // não recarrega a página
     }
   );
 });

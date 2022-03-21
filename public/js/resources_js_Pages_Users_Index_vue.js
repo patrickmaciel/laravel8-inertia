@@ -33,7 +33,9 @@ __webpack_require__.r(__webpack_exports__);
         search: value
       }, {
         preserveState: true,
-        replace: true
+        // não gera histórico
+        replace: true // não recarrega a página
+
       });
     });
     var __returned__ = {

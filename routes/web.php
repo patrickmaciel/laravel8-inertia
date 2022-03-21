@@ -62,5 +62,6 @@ Route::get('/settings', function () {
 });
 
 Route::post('/logout', function () {
-    dd(request('foo'));
+    // dd(request('foo'));
+    return response()->json(['foo' => request('foo')]);
 });

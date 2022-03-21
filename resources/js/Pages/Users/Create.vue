@@ -17,8 +17,13 @@
         id="name"
         class="border border-gray-400 p-2 w-full"
         type="text"
-        required
       />
+      <ValidationError :hasError="errors.name" />
+      <!-- <div
+        v-if="errors.name"
+        v-text="errors.name"
+        class="text-red-500 text-xs"
+      ></div> -->
     </div>
 
     <div class="mb-6">
@@ -34,8 +39,8 @@
         id="email"
         class="border border-gray-400 p-2 w-full"
         type="email"
-        required
       />
+      <ValidationError :hasError="errors.email" />
     </div>
 
     <div class="mb-6">
@@ -51,8 +56,8 @@
         name="password"
         id="password"
         class="border border-gray-400 p-2 w-full"
-        required
       />
+      <ValidationError :hasError="errors.password" />
     </div>
 
     <div class="mb-6">
@@ -69,6 +74,12 @@
 <script setup>
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
+import ValidationError from "../../Shared/ValidationError";
+
+// errors = defineProps errors
+defineProps({
+  errors: Object,
+});
 
 let form = reactive({
   name: "",

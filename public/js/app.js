@@ -180,9 +180,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
     href: "/",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'font-bold underline': _ctx.$page.component == 'Welcome'
-    })
+    active: _ctx.$page.component == 'Welcome'
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_2];
@@ -192,11 +190,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
+  , ["active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
     href: "/users",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'font-bold underline': _ctx.$page.component == 'Users'
-    })
+    active: _ctx.$page.component == 'Users/Index'
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_3];
@@ -206,11 +202,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
+  , ["active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
     href: "/settings",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'font-bold underline': _ctx.$page.component == 'Settings'
-    })
+    active: _ctx.$page.component == 'Settings'
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_4];
@@ -220,13 +214,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
+  , ["active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
     href: "/logout",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'font-bold underline': _ctx.$page.url == '/logout'
-    }),
+    active: _ctx.$page.url == '/logout',
     method: "post",
-    data: "{ foo: 'bar' }",
+    data: {
+      foo: 'bar'
+    },
     as: "button"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -237,7 +231,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li><Link class='text-blue-500 hover:underline' :class=\"{ 'font-bold underline': $page.url.startsWith('/users') }\" href=\"/users\">Users</Link></li>\n      <li><Link class='text-blue-500 hover:underline' :class=\"{ 'font-bold underline': $page.component == 'Settings' }\" href=\"/settings\">Settings</Link></li>\n      <li><Link class='text-blue-500 hover:underline' :class=\"{ 'font-bold underline': $page.url == '/logout' }\" href=\"/logout\" method='post' :data=\"{ foo: 'bar'}\" as='button'>Log Out</Link></li> ")])]);
+  , ["active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li><Link class='text-blue-500 hover:underline' :class=\"{ 'font-bold underline': $page.url.startsWith('/users') }\" href=\"/users\">Users</Link></li>\n      <li><Link class='text-blue-500 hover:underline' :class=\"{ 'font-bold underline': $page.component == 'Settings' }\" href=\"/settings\">Settings</Link></li>\n      <li><Link class='text-blue-500 hover:underline' :class=\"{ 'font-bold underline': $page.url == '/logout' }\" href=\"/logout\" method='post' :data=\"{ foo: 'bar'}\" as='button'>Log Out</Link></li> ")])]);
 }
 
 /***/ }),
