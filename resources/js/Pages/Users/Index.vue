@@ -118,6 +118,7 @@ import Pagination from "../../Shared/Pagination.vue";
 import { ref, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import throttle from "lodash/throttle";
+import debounce from "lodash/debounce";
 
 let props = defineProps({
   time: String,
@@ -129,8 +130,8 @@ let search = ref(props.filters.search);
 
 watch(
   search,
-  throttle(function (value) {
-    console.log("throttle");
+  debounce(function (value) {
+    console.log("debounce");
     Inertia.get(
       "/users",
       {
@@ -143,4 +144,20 @@ watch(
     );
   }, 500)
 );
+// watch(
+//   search,
+//   throttle(function (value) {
+//     console.log("throttle");
+//     Inertia.get(
+//       "/users",
+//       {
+//         search: value,
+//       },
+//       {
+//         preserveState: true, // não gera histórico
+//         replace: true, // não recarrega a página
+//       }
+//     );
+//   }, 500)
+// );
 </script>

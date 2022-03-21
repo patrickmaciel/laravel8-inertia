@@ -16,6 +16,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/throttle */ "./node_modules/lodash/throttle.js");
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -31,8 +34,8 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props;
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(props.filters.search);
-    (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(search, lodash_throttle__WEBPACK_IMPORTED_MODULE_3___default()(function (value) {
-      console.log("throttle");
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(search, lodash_debounce__WEBPACK_IMPORTED_MODULE_4___default()(function (value) {
+      console.log("debounce");
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get("/users", {
         search: value
       }, {
@@ -41,7 +44,23 @@ __webpack_require__.r(__webpack_exports__);
         replace: true // não recarrega a página
 
       });
-    }, 500));
+    }, 500)); // watch(
+    //   search,
+    //   throttle(function (value) {
+    //     console.log("throttle");
+    //     Inertia.get(
+    //       "/users",
+    //       {
+    //         search: value,
+    //       },
+    //       {
+    //         preserveState: true, // não gera histórico
+    //         replace: true, // não recarrega a página
+    //       }
+    //     );
+    //   }, 500)
+    // );
+
     var __returned__ = {
       props: props,
       search: search,
@@ -49,7 +68,8 @@ __webpack_require__.r(__webpack_exports__);
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_1__.watch,
       Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia,
-      throttle: (lodash_throttle__WEBPACK_IMPORTED_MODULE_3___default())
+      throttle: (lodash_throttle__WEBPACK_IMPORTED_MODULE_3___default()),
+      debounce: (lodash_debounce__WEBPACK_IMPORTED_MODULE_4___default())
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
