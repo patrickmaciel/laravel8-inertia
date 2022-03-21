@@ -14,6 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _Shared_ValidationError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Shared/ValidationError */ "./resources/js/Shared/ValidationError.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+
 
 
  // errors = defineProps errors
@@ -24,33 +26,28 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
-    expose();
-    var form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+    expose(); // using useForm you not longer need to use reactive reactive({
+
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_3__.useForm)({
       name: "",
       email: "",
       password: ""
-    });
-    var processing = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    }); // setTimeout(() => {
+    //   form.reset();
+    // }, 3000);
 
     var submit = function submit() {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post("/users", form, {
-        onStart: function onStart() {
-          processing.value = true;
-        },
-        onFinish: function onFinish() {
-          processing.value = false;
-        }
-      });
+      form.post("/users");
     };
 
     var __returned__ = {
       form: form,
-      processing: processing,
       submit: submit,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia,
-      ValidationError: _Shared_ValidationError__WEBPACK_IMPORTED_MODULE_2__["default"]
+      ValidationError: _Shared_ValidationError__WEBPACK_IMPORTED_MODULE_2__["default"],
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_3__.useForm
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -167,10 +164,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ValidationError"], {
-    hasError: $props.errors.name
+    hasError: $setup.form.errors.name
   }, null, 8
   /* PROPS */
-  , ["hasError"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div\n        v-if=\"errors.name\"\n        v-text=\"errors.name\"\n        class=\"text-red-500 text-xs\"\n      ></div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , ["hasError"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div\n        v-if=\"form.errors.name\"\n        v-text=\"form.errors.name\"\n        class=\"text-red-500 text-xs\"\n      ></div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.form.email = $event;
     }),
@@ -181,7 +178,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ValidationError"], {
-    hasError: $props.errors.email
+    hasError: $setup.form.errors.email
   }, null, 8
   /* PROPS */
   , ["hasError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -195,13 +192,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ValidationError"], {
-    hasError: $props.errors.password
+    hasError: $setup.form.errors.password
   }, null, 8
   /* PROPS */
   , ["hasError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     "class": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
-    disabled: $setup.processing
+    disabled: $setup.form.processing
   }, " Submit ", 8
   /* PROPS */
   , _hoisted_9)])], 32
