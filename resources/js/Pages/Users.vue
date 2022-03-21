@@ -1,4 +1,9 @@
 <template>
+  <Head>
+    <title>My App - Users</title>
+    <meta type='description' head-key='description' content='Description of Users page'>
+  </Head>
+
   <h1 class='text-3xl'>Users</h1>
   <div style="margin-top: 800px">
     <p>The current time is {{ time }}</p>

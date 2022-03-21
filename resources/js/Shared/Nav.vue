@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul class='flex space-x-4 list-inside list-disc gap-2'>
+    <ul class='flex space-x-6 gap-2'>
       <li><NavLink href='/' :class="{ 'font-bold underline' : $page.component == 'Welcome' }">Home</NavLink></li>
       <li><NavLink href='/users' :class="{ 'font-bold underline' : $page.component == 'Users' }">Users</NavLink></li>
       <li><NavLink href='/settings' :class="{ 'font-bold underline' : $page.component == 'Settings' }">Settings</NavLink></li>
@@ -19,6 +19,3 @@ export default {
   components: { NavLink }
 };
 </script>
-
-<style>
-</style>
