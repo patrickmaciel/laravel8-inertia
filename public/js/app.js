@@ -550,44 +550,64 @@ __webpack_require__.r(__webpack_exports__);
 var map = {
 	"./Auth/Login": [
 		"./resources/js/Pages/Auth/Login.vue",
+		9,
 		"resources_js_Pages_Auth_Login_vue"
 	],
 	"./Auth/Login.vue": [
 		"./resources/js/Pages/Auth/Login.vue",
+		9,
 		"resources_js_Pages_Auth_Login_vue"
 	],
 	"./Settings": [
 		"./resources/js/Pages/Settings.vue",
+		9,
 		"resources_js_Pages_Settings_vue"
 	],
 	"./Settings.vue": [
 		"./resources/js/Pages/Settings.vue",
+		9,
 		"resources_js_Pages_Settings_vue"
 	],
 	"./Users/Create": [
 		"./resources/js/Pages/Users/Create.vue",
+		9,
 		"resources_js_Pages_Users_Create_vue"
 	],
 	"./Users/Create.vue": [
 		"./resources/js/Pages/Users/Create.vue",
+		9,
 		"resources_js_Pages_Users_Create_vue"
 	],
 	"./Users/Index": [
 		"./resources/js/Pages/Users/Index.vue",
+		9,
 		"/js/vendor",
 		"resources_js_Pages_Users_Index_vue"
 	],
 	"./Users/Index.vue": [
 		"./resources/js/Pages/Users/Index.vue",
+		9,
 		"/js/vendor",
 		"resources_js_Pages_Users_Index_vue"
 	],
+	"./Users/Show": [
+		"./resources/js/Pages/Users/Show.vue",
+		7,
+		"resources_js_Pages_Users_Show_vue"
+	],
+	"./Users/Show.vue": [
+		"./resources/js/Pages/Users/Show.vue",
+		7,
+		"resources_js_Pages_Users_Show_vue"
+	],
 	"./Welcome": [
 		"./resources/js/Pages/Welcome.vue",
+		9,
 		"resources_js_Pages_Welcome_vue"
 	],
 	"./Welcome.vue": [
 		"./resources/js/Pages/Welcome.vue",
+		9,
 		"resources_js_Pages_Welcome_vue"
 	]
 };
@@ -601,8 +621,8 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(() => {
-		return __webpack_require__(id);
+	return Promise.all(ids.slice(2).map(__webpack_require__.e)).then(() => {
+		return __webpack_require__.t(id, ids[1] | 16)
 	});
 }
 webpackAsyncContext.keys = () => (Object.keys(map));
