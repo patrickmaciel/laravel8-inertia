@@ -1,11 +1,7 @@
 <template>
   <Head>
     <title>My App - Users</title>
-    <meta
-      type="description"
-      head-key="description"
-      content="Description of Users page"
-    />
+    <meta name="description" head-key="description" content="Description of Users page" />
   </Head>
 
   <!-- This example requires Tailwind CSS v2.0+ -->
@@ -19,11 +15,8 @@
         </p>
       </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <Link
-          href="/users/create"
-          as="button"
-          class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-        >
+        <Link v-if="can.createUser" href="/users/create" as="button"
+          class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" >
           Add user
         </Link>
       </div>
@@ -61,10 +54,8 @@
                   >
                     {{ user.name }}
                   </td>
-                  <td
-                    class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
-                  >
-                    <Link
+                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6" >
+                    <Link v-if="user.can.edit"
                       :href="`/users/${user.id}/edit`"
                       class="text-indigo-600 hover:text-indigo-900"
                       >Edit<span class="sr-only">, {{ user.name }}</span></Link
@@ -124,6 +115,7 @@ let props = defineProps({
   time: String,
   users: Object,
   filters: Object,
+  can: Object,
 });
 
 let search = ref(props.filters.search);
