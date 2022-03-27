@@ -22,6 +22,7 @@ class UsersController extends Controller
                 ->through(fn ($user) => [
                     'id' => $user->id,
                     'name' => $user->name,
+                    'email' => $user->email,
                     'can' => [
                         'edit' => Auth::user()->can('edit', $user),
                     ],
@@ -55,6 +56,7 @@ class UsersController extends Controller
     {
         return Inertia::render('Users/Show', [
             'user' => $user->only(['id', 'name', 'email', 'created_at']),
+            // 'user' => $user,
         ]);
     }
 }
