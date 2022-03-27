@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [UsersController::class, 'index']);
     Route::get('/users/create', [UsersController::class, 'create'])->can('create', 'App\Models\User');
     Route::post('/users', [UsersController::class, 'store']);
+    Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
 
     Route::get('/settings', function () {
         return Inertia::render('Settings');

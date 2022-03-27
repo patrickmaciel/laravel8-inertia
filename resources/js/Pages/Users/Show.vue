@@ -4,9 +4,10 @@
     <meta name="description" head-key="description" content="Description of Users page" />
   </Head>
 
-  <!-- This example requires Tailwind CSS v2.0+ -->
   <div>
-
+    <h1>{{ user.id }} User {{ user.name }}</h1>
+    <p>{{ user.email }}</p>
+  </div>
 </template>
 
 <script setup>
@@ -16,4 +17,5 @@ let props = defineProps({
   user: Object,
   can: Object,
 });
+
 </script>
