@@ -22,56 +22,26 @@
   </ul>
 
   <hr />
-  <div>
-    <pre>
-      <code ref="ex1">
-        class Example
-        {
-          public function __construct()
-          {
-            //
-          }
-        }
-      </code>
-    </pre>
-  </div>
 
-  <hr />
-  <div id="ex2">
-    <pre>
-      <code>
-        class Example
-        {
-          public function __construct()
-          {
-            //
-          }
-        }
-      </code>
-    </pre>
-  </div>
+  <hightlight :code='snippet' />
 </template>
 
 <script setup>
+import Hightlight from "../Components/Hightlight.vue";
+
 defineProps({
   name: String,
   idade: Number,
   frameworks: Array,
 });
-</script>
 
-<script>
-import { highlight, highlightElement } from '@/Services/SyntaxHighlighting';
-
-export default {
-  mounted() {
-    // highlightAll();
-    // highlight();
-    highlightElement(this.$refs.ex1);
-  },
+let snippet = `
+class Example
+{
+  public function __construct()
+  {
+    // ...
+  }
 }
+`.trim();
 </script>
-
-<style>
-@import '/node_modules/highlight.js/styles/github-dark.css';
-</style>
