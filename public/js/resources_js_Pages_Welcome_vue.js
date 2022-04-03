@@ -12,7 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Services_SyntaxHighlighting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Services/SyntaxHighlighting */ "./resources/js/Services/SyntaxHighlighting.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _Composables_useClipboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Composables/useClipboard */ "./resources/js/Composables/useClipboard.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 // import { highlightElement } from '@/Services/SyntaxHighlighting';
 // export default {
 //   mounted() {
@@ -21,6 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 //     highlightElement(this.$refs.code);
 //   },
 // }
+
 
  // import {ref} from 'vue';
 
@@ -31,15 +33,27 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
-    var block = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
-    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {
+    var props = __props;
+    var block = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(null);
+
+    var _useClipboard = (0,_Composables_useClipboard__WEBPACK_IMPORTED_MODULE_1__.useClipboard)(props.code),
+        copy = _useClipboard.copy,
+        copied = _useClipboard.copied,
+        supported = _useClipboard.supported;
+
+    (0,vue__WEBPACK_IMPORTED_MODULE_2__.onMounted)(function () {
       (0,_Services_SyntaxHighlighting__WEBPACK_IMPORTED_MODULE_0__.highlightElement)(block.value);
     });
     var __returned__ = {
+      props: props,
       block: block,
+      copy: copy,
+      copied: copied,
+      supported: supported,
       highlightElement: _Services_SyntaxHighlighting__WEBPACK_IMPORTED_MODULE_0__.highlightElement,
-      onMounted: vue__WEBPACK_IMPORTED_MODULE_1__.onMounted,
-      ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref
+      useClipboard: _Composables_useClipboard__WEBPACK_IMPORTED_MODULE_1__.useClipboard,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_2__.onMounted,
+      ref: vue__WEBPACK_IMPORTED_MODULE_2__.ref
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -99,12 +113,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  key: 0,
+  "class": "bg-gray-800 text-white flex justify-end px-2 py-1 text-xs border-b border-gray-700"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("pre", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("code", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$setup.supported ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("header", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "hover:bg-gray-600 rounded px-2",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $setup.copy && $setup.copy.apply($setup, arguments);
+    })
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.copied ? 'Copied' : 'Copy'), 1
+  /* TEXT */
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("code", {
     ref: "block"
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.code), 513
   /* TEXT, NEED_PATCH */
-  )]);
+  )])]);
 }
 
 /***/ }),
@@ -178,6 +203,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["code"])], 64
   /* STABLE_FRAGMENT */
   );
+}
+
+/***/ }),
+
+/***/ "./resources/js/Composables/useClipboard.js":
+/*!**************************************************!*\
+  !*** ./resources/js/Composables/useClipboard.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useClipboard": () => (/* binding */ useClipboard)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+function useClipboard(text) {
+  var copied = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false); // let supported = Boolean(navigator && navigator.clipboard);
+
+  var supported = navigator && 'clipboard' in navigator;
+
+  var copy = function copy() {
+    if (supported) {
+      navigator.clipboard.writeText(text);
+      copied.value = true; // setTimeout(() => {
+      //   copied.value = false;
+      // }, 2000);
+
+      return;
+    }
+
+    alert('Apologies, but your browser does not support this feature.');
+  };
+
+  return {
+    copy: copy,
+    copied: copied,
+    supported: supported
+  };
 }
 
 /***/ }),
