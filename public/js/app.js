@@ -592,10 +592,12 @@ var map = {
 	],
 	"./Welcome": [
 		"./resources/js/Pages/Welcome.vue",
+		"/js/vendor",
 		"resources_js_Pages_Welcome_vue"
 	],
 	"./Welcome.vue": [
 		"./resources/js/Pages/Welcome.vue",
+		"/js/vendor",
 		"resources_js_Pages_Welcome_vue"
 	]
 };

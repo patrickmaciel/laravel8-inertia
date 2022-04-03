@@ -20,7 +20,36 @@
       v-text="framework"
     ></li>
   </ul>
+
   <hr />
+  <div>
+    <pre>
+      <code ref="ex1">
+        class Example
+        {
+          public function __construct()
+          {
+            //
+          }
+        }
+      </code>
+    </pre>
+  </div>
+
+  <hr />
+  <div id="ex2">
+    <pre>
+      <code>
+        class Example
+        {
+          public function __construct()
+          {
+            //
+          }
+        }
+      </code>
+    </pre>
+  </div>
 </template>
 
 <script setup>
@@ -30,3 +59,19 @@ defineProps({
   frameworks: Array,
 });
 </script>
+
+<script>
+import { highlight, highlightElement } from '@/Services/SyntaxHighlighting';
+
+export default {
+  mounted() {
+    // highlightAll();
+    // highlight();
+    highlightElement(this.$refs.ex1);
+  },
+}
+</script>
+
+<style>
+@import '/node_modules/highlight.js/styles/github-dark.css';
+</style>
