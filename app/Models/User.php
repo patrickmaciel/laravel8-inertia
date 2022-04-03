@@ -47,14 +47,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
+    /*
      * Disable completed the return of all properties of User
      * It's an alternative to prevent sensitive data to return on an API for example.
      *
      * @return array
      */
-    public function toArray()
-    {
-        return [];
-    }
+    // public function toArray()
+    // {
+    //     return [];
+    // }
 }

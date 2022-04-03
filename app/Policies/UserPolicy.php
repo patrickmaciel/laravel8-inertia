@@ -77,4 +77,10 @@ class UserPolicy
     public function forceDelete(User $user, User $model)
     {
     }
+
+    public function manageEmails(User $user)
+    {
+        // 1 means admin
+        return $user->id === 1;
+    }
 }
