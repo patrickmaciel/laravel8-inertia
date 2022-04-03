@@ -17,8 +17,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Composables_useCurrentUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Composables/useCurrentUser */ "./resources/js/Composables/useCurrentUser.js");
 
 
+
+ // import User from '@/Models/User';
 
  // let Pagination = defineAsyncComponent(() => {
 //   return import('@/Shared/Pagination');
@@ -37,6 +40,16 @@ __webpack_require__.r(__webpack_exports__);
     var props = __props;
     var Pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineAsyncComponent)(function () {
       return __webpack_require__.e(/*! import() */ "resources_js_Shared_Pagination_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/Shared/Pagination */ "./resources/js/Shared/Pagination.vue"));
+    });
+    var currentUser = (0,_Composables_useCurrentUser__WEBPACK_IMPORTED_MODULE_4__.useCurrentUser)();
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      // options api => this.$page.props.auth.user.username
+      // composition api =>
+      // console.log(Inertia.page.props.auth.user);
+      // console.log(new User(Inertia.page.props.auth.user));
+      // let user = new User(Inertia.page.props.auth.user);
+      // console.log(user.follows({}));
+      console.log(currentUser.follows({}));
     });
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.filters.search);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(search, lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(function (value) {
@@ -69,13 +82,16 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       Pagination: Pagination,
       props: props,
+      currentUser: currentUser,
       search: search,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
       defineAsyncComponent: vue__WEBPACK_IMPORTED_MODULE_0__.defineAsyncComponent,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia,
       throttle: (lodash_throttle__WEBPACK_IMPORTED_MODULE_2___default()),
-      debounce: (lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default())
+      debounce: (lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()),
+      useCurrentUser: _Composables_useCurrentUser__WEBPACK_IMPORTED_MODULE_4__.useCurrentUser
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -289,6 +305,70 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT */
   );
 }
+
+/***/ }),
+
+/***/ "./resources/js/Composables/useCurrentUser.js":
+/*!****************************************************!*\
+  !*** ./resources/js/Composables/useCurrentUser.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useCurrentUser": () => (/* binding */ useCurrentUser)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _Models_User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Models/User */ "./resources/js/Models/User.js");
+
+
+function useCurrentUser() {
+  return new _Models_User__WEBPACK_IMPORTED_MODULE_1__["default"](_inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.page.props.auth.user);
+}
+
+/***/ }),
+
+/***/ "./resources/js/Models/User.js":
+/*!*************************************!*\
+  !*** ./resources/js/Models/User.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ User)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var User = /*#__PURE__*/function () {
+  function User() {
+    var attributes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, User);
+
+    Object.assign(this, attributes);
+  }
+
+  _createClass(User, [{
+    key: "follows",
+    value: function follows(user) {
+      return true;
+    }
+  }, {
+    key: "is",
+    value: function is(user) {
+      return this.id === user.id;
+    }
+  }]);
+
+  return User;
+}();
+
+
 
 /***/ }),
 

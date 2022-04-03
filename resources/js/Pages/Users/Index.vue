@@ -106,10 +106,12 @@
 </template>
 
 <script setup>
-import { ref, watch, defineAsyncComponent } from "vue";
+import { ref, watch, defineAsyncComponent, onMounted } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import throttle from "lodash/throttle";
 import debounce from "lodash/debounce";
+// import User from '@/Models/User';
+import { useCurrentUser } from '@/Composables/useCurrentUser';
 
 // let Pagination = defineAsyncComponent(() => {
 //   return import('@/Shared/Pagination');
@@ -123,8 +125,18 @@ let props = defineProps({
   can: Object,
 });
 
-let search = ref(props.filters.search);
+let currentUser = useCurrentUser();
+onMounted(() => {
+  // options api => this.$page.props.auth.user.username
+  // composition api =>
+  // console.log(Inertia.page.props.auth.user);
+  // console.log(new User(Inertia.page.props.auth.user));
+  // let user = new User(Inertia.page.props.auth.user);
+  // console.log(user.follows({}));
+  console.log(currentUser.follows({}));
+});
 
+let search = ref(props.filters.search);
 watch(
   search,
   debounce(function (value) {
