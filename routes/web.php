@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ThreadsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,6 +30,8 @@ Route::middleware('auth')->group(function () {
             'frameworks' => ['Laravel', 'Vue', 'InertiaJs'],
         ]);
     });
+
+    Route::get('/threads', [ThreadsController::class, 'index']);
 
     Route::get('/users', [UsersController::class, 'index']);
     Route::get('/users/create', [UsersController::class, 'create'])->can('create', 'App\Models\User');

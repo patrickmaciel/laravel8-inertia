@@ -9,7 +9,10 @@
       <div class='flex items-center'>
         <h1 class='font-bold text-lg'>My App</h1>
         <!-- <p class='ml-4 text-sm'>Welcome Back, {{ $page.props.auth.user.username }}</p> -->
-        <p class='ml-4 text-sm'>Welcome Back, {{ username }}</p>
+        <!-- <p class='ml-4 text-sm'>Welcome Back, {{ username }}</p> -->
+        <p class='ml-4 text-sm'>
+          Latest thread: <Link href='#'  v-text='$page.props.latestThread.title' />
+        </p>
       </div>
       <Nav />
     </header>
